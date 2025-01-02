@@ -5,58 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      #popup {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        background-color: black;
+        color: white;
+        display: none;
+      }
+    </style>
 </head>
 <body>
-    <video
-			id="my-video"
-			class="video-js"
-			controls
-			preload="auto"
-			width="200"
-			data-setup="{}"
-    >
-			<source src="input/video_to_fix.mp4" type="video/mp4" />
-			<p class="vjs-no-js">
-					To view this video please enable JavaScript, and consider upgrading to a
-					web browser that
-					<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-			</p>
-    </video>
-	<video id="my-video" class="video-js" controls preload="auto" width="200" data-setup="{}">
-		<source src="output/video_fixed.mp4" type="video/mp4" />
-		<p class="vjs-no-js">
-			To view this video please enable JavaScript, and consider upgrading to a
-			web browser that
-			<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-		</p>
-	</video>
-	</br>
-	</br>
-	</br>
-    <video
-			id="my-video"
-			class="video-js"
-			controls
-			preload="auto"
-			width="200"
-			data-setup="{}"
-    >
-			<source src="input/video_to_fix_2.mp4" type="video/mp4" />
-			<p class="vjs-no-js">
-					To view this video please enable JavaScript, and consider upgrading to a
-					web browser that
-					<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-			</p>
-    </video>
-	<video id="my-video" class="video-js" controls preload="auto" width="200" data-setup="{}">
-		<source src="output/video_fixed_2.mp4" type="video/mp4" />
-		<p class="vjs-no-js">
-			To view this video please enable JavaScript, and consider upgrading to a
-			web browser that
-			<a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-		</p>
-	</video>
-    
-    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    <p>Hello World!!</p>
+    <div id="popup">
+      Esse é um popup
+    </div>
 </body>
+<script>
+  const anotherFunction = async () => {
+    return new Promise((resolve) => {
+      console.log('Abre o popup');
+      const pupup = document.querySelector('#popup');
+      pupup.style.display = 'block';
+      // setTimeout(() => {
+      //   console.log('Abre o popup');
+      //   const pupup = document.querySelector('#popup');
+      //   pupup.style.display = 'block';
+      //   resolve();
+      // }, 3000);
+    });
+  }
+	window.addEventListener('beforeunload', (e) => {
+    const confirmationMessage = 'Você realmente quer sair?';
+    console.log(e);
+    anotherFunction().then(() => {
+      e.preventDefault()
+
+    });
+    e.returnValue = confirmationMessage;
+    return confirmationMessage;
+	});
+</script>
 </html>
